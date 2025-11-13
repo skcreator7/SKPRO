@@ -1,10 +1,9 @@
 services:
   - name: sk4film-complete
     type: web
-    env:
-      - name: PORT
-        value: "8000"
+    # REMOVED source_directory - files should be in root
     build:
+      type: docker
       dockerfile: Dockerfile
     ports:
       - port: 8000
@@ -12,23 +11,8 @@ services:
     regions:
       - fra
     instance_type: nano
-    min_scale: 1
-    max_scale: 1
-    env_vars:
-      - API_ID
-      - API_HASH
-      - USER_SESSION_STRING
-      - BOT_TOKEN
-      - TEXT_CHANNEL_IDS
-      - FILE_CHANNEL_480P
-      - FILE_CHANNEL_720P
-      - FILE_CHANNEL_1080P
-      - MONGODB_URI
-      - DATABASE_NAME
-      - FORCE_SUB_CHANNEL
-      - SHORTENER_API
-      - SHORTENER_DOMAIN
-      - WEBSITE_URL
-      - BOT_USERNAME
-      - ADMIN_IDS
-      - AUTO_DELETE_TIME
+    scaling:
+      min: 1
+      max: 1
+    env:
+      - PORT=8000
