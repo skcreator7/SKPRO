@@ -27,9 +27,9 @@ class Config:
         int(x) for x in os.environ.get("TEXT_CHANNEL_IDS", "-1001891090100,-1002024811395").split(",")
     ]
     
-    FILE_CHANNEL_480P = int(os.environ.get("FILE_CHANNEL_480P", "-1002123456789"))
-    FILE_CHANNEL_720P = int(os.environ.get("FILE_CHANNEL_720P", "-1002987654321"))
-    FILE_CHANNEL_1080P = int(os.environ.get("FILE_CHANNEL_1080P", "-1002456789123"))
+    FILE_CHANNEL_480P = int(os.environ.get("FILE_CHANNEL_480P", "-1001768249569"))
+    FILE_CHANNEL_720P = int(os.environ.get("FILE_CHANNEL_720P", "-1001768249569"))
+    FILE_CHANNEL_1080P = int(os.environ.get("FILE_CHANNEL_1080P", "-1001768249569"))
     
     FILE_CHANNELS = {
         "480p": FILE_CHANNEL_480P,
@@ -42,7 +42,7 @@ class Config:
     DATABASE_NAME = os.environ.get("DATABASE_NAME", "sk4film_bot")
     
     # Force Subscribe
-    FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "-1001891090100"))
+    FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "-1002555323872"))
     
     # Link Shortener
     SHORTENER_API = os.environ.get("SHORTENER_API", "")
@@ -52,7 +52,7 @@ class Config:
     WEBSITE_URL = os.environ.get("WEBSITE_URL", "https://sk4film.vercel.app")
     
     # Admin
-    ADMIN_IDS = [int(x) for x in os.environ.get("ADMIN_IDS", "123456789").split(",")]
+    ADMIN_IDS = [int(x) for x in os.environ.get("ADMIN_IDS", "5928972764").split(",")]
     
     # Auto Delete Time (seconds)
     AUTO_DELETE_TIME = int(os.environ.get("AUTO_DELETE_TIME", "300"))  # 5 minutes
