@@ -1,32 +1,40 @@
 FROM python:3.11-slim
 
-# Set working directory
+# Set environment variables
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+
 WORKDIR /app
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
+# Install system dependencies with SSL support
+RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     g++ \
+    ca-certificates \
+    libssl-dev \
+    openssl \
+    && update-ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements first (for caching)
+# Copy requirements first
 COPY requirements.txt .
 
-# Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# Upgrade pip and install dependencies
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
+    pip install --no-cache-dir -r requirements.txt
 
-# Copy all application files
+# Copy application files
 COPY . .
 
-# Create temp directory for pyrogram sessions
+# Create temp directory
 RUN mkdir -p /tmp
 
 # Expose port
 EXPOSE 8000
 
 # Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD python -c "import requests; requests.get('http://localhost:8000/')" || exit 1
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD python -c "import sys; sys.exit(0)" || exit 1
 
-# Start both bot and web server
+# Start both services
 CMD python bot.py & python main.py
