@@ -27,9 +27,9 @@ class Config:
     ]
     
     # FILE CHANNELS - For files with different qualities
-    FILE_CHANNEL_480P = int(os.environ.get("FILE_CHANNEL_480P", "-1002123456789"))
-    FILE_CHANNEL_720P = int(os.environ.get("FILE_CHANNEL_720P", "-1002987654321"))
-    FILE_CHANNEL_1080P = int(os.environ.get("FILE_CHANNEL_1080P", "-1002456789123"))
+    FILE_CHANNEL_480P = int(os.environ.get("FILE_CHANNEL_480P", "-1001768249569"))
+    FILE_CHANNEL_720P = int(os.environ.get("FILE_CHANNEL_720P", "-1001768249569"))
+    FILE_CHANNEL_1080P = int(os.environ.get("FILE_CHANNEL_1080P", "-1001768249569"))
     
     FILE_CHANNELS = {
         "480p": FILE_CHANNEL_480P,
